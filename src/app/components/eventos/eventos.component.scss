@@ -1,0 +1,45 @@
+.m-r-8 {
+  margin-right: 6px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.success-snackbar {
+  background-color: #4CAF50 !important;
+  color: #fff !important;
+}
+
+.feather-base {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.address-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.icon-container.start {
+  margin-right: 8px;
+  order: -1;
+}
+
+.icon-container.end {
+  margin-left: auto;
+}
+
+.acoes-coluna {
+  width: 120px;
+  min-width: 100px;
+  max-width: 150px;
+}
+

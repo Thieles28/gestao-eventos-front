@@ -1,0 +1,66 @@
+<!-- Daily Activity -->
+<mat-card class="w-100">
+  <mat-card-content>
+    <h4 class="mb-56">Eventos</h4>
+
+    <div class="table-responsive">
+      <table [dataSource]="dataSource" class="text-nowrap w-100" mat-table matSort>
+        <!-- Titulo Column -->
+        <ng-container matColumnDef="titulo">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header> Titulo</th>
+          <td *matCellDef="let element" mat-cell>
+            <p class="mb-0 fw-medium op-5">{{ element.titulo }}</p>
+          </td>
+        </ng-container>
+
+        <!-- Descriçaõ Column -->
+        <ng-container matColumnDef="descricao">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header> Descrição</th>
+          <td *matCellDef="let element" mat-cell>
+            <p class="mb-0 fw-medium op-5">{{ element.descricao }}</p>
+          </td>
+        </ng-container>
+
+        <!-- Data hora evento Column -->
+        <ng-container matColumnDef="dataHoraEvento">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header> Data do evento</th>
+          <td *matCellDef="let element" mat-cell>
+            <p class="mb-0 fw-medium op-5">{{ element.dataHoraEvento | date: 'dd/MM/yyyy HH:mm' }}</p>
+          </td>
+        </ng-container>
+
+        <!-- Local evento Column -->
+        <ng-container matColumnDef="localEvento">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header> Local do evento</th>
+          <td *matCellDef="let element" mat-cell>
+            <p class="mb-0 fw-medium op-5">{{ element.localEvento }}</p>
+          </td>
+        </ng-container>
+
+        <!-- Ações Column -->
+        <ng-container matColumnDef="acoes">
+          <th *matHeaderCellDef class="acoes-coluna" mat-header-cell> Ações</th>
+          <td *matCellDef="let element" mat-cell>
+            <a class="m-r-8 cursor-pointer">
+              <i-feather (click)="visualizarEvento(element.id)" class="mt-n3 feather-base text-dark"
+                         name="search"></i-feather>
+            </a>
+            <a class="m-r-8 cursor-pointer">
+              <i-feather (click)="atualizarEvento(element.id)" class="mt-n3 feather-base text-dark"
+                         name="edit"></i-feather>
+            </a>
+            <a class="m-r-8 cursor-pointer">
+              <i-feather (click)="removerEvento(element.id)" class="mt-n3 feather-base text-dark"
+                         name="trash"></i-feather>
+            </a>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+      </table>
+      <mat-paginator (page)="listarEventos()" [pageSizeOptions]="[3, 5, 10, 25, 100]"
+                     showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="mb-32">{{ id ? 'Atualizar Evento' : 'Cadastrar Evento' }}</h4>
+    <form [formGroup]="eventosForm">
+      <mat-form-field appearance="outline" class="w-100 fs-16">
+        <mat-label>Titulo</mat-label>
+        <input formControlName="titulo" matInput placeholder="Entre com titulo do evento" type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100 fs-16">
+        <mat-label>Descrição</mat-label>
+        <textarea formControlName="descricao" matInput placeholder="Entre com descrição do evento"
+                  type="text"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data e hora do evento</mat-label>
+        <input
+          (click)="picker.open()"
+          [ngxMatDatetimePicker]="picker"
+          formControlName="dataHoraEvento"
+          matInput
+          readonly/>
+        <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100 fs-16">
+        <mat-label>Local do evento</mat-label>
+        <input formControlName="localEvento" matInput placeholder="Entre com local do evento" type="text">
+      </mat-form-field>
+
+      <div *ngIf="mensagem" class="alert alert-success alert-text-success d-flex fs-14 align-items-center rounded mb-16"
+           role="alert">
+        <i-feather class="text-success feather-base me-12" name="check-circle"></i-feather>
+        {{ id ? 'Evento atualizado com sucesso!' : 'Evento cadastrado com sucesso!' }}
+      </div>
+      <button (click)="cadastrarEvento()" *ngIf="!id" [disabled]="eventosForm.invalid" class="me-8 mb-8 cl"
+              color="primary" mat-raised-button>Cadastrar Evento
+      </button>
+      <button (click)="atualizarEvento()" *ngIf="id" [disabled]="eventosForm.invalid" class="me-8 mb-8 cl"
+              color="primary" mat-raised-button>Atualizar Evento
+      </button>
+    </form>
+  </div>
+</div>

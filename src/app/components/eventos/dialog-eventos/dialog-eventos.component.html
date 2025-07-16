@@ -1,0 +1,37 @@
+<h2 class="negrito" mat-dialog-title>Eventos</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-grid-list cols="2" rowHeight="5:1">
+    <mat-grid-tile>
+      <div class="text-center">
+        <h3>Titulo</h3>
+        <p>{{ evento.titulo }}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="text-center">
+        <h3>Data do evento</h3>
+        <p>{{ evento.dataHoraEvento | date: 'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="1" rowHeight="12:1">
+    <mat-grid-tile>
+      <div class="text-center">
+        <h3>Descrição</h3>
+        <p>{{ evento.descricao }}</p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="1" rowHeight="12:1">
+    <mat-grid-tile>
+      <div class="text-center">
+        <h3>Local do evento</h3>
+        <p>{{ evento.localEvento }}</p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Voltar</button>
+</mat-dialog-actions>
+

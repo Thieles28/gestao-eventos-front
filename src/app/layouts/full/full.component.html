@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- Sidebar -->
+  <mat-sidenav #drawer [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"
+               class="sidenav" fixedInViewport>
+
+    <div class="p-16">
+      <div class="mb-16">
+        <a class="d-flex align-items-center" href="javascript:void(0)">
+          <img alt="" class="logo" src="assets/images/logo-eventos.png">
+        </a>
+      </div>
+
+      <div class="pt-8">
+        <ul>
+          <li *ngFor="let sidenav of sidebarMenu" class="list-group mb-8">
+            <ng-container *ngIf="sidenav.visible">
+              <a [matRippleColor]="'#f7f8f443'" [routerLinkActive]="routerActive"
+                 class="sidebar-menu fs-16 w-100 d-flex align-items-center"
+                 matRipple routerLink="{{ sidenav.link }}">
+                <i-feather class="feather-base me-16" name="{{ sidenav.icon }}"></i-feather>
+                <span
+                  class="ps-4">{{ sidenav.menu }}</span>
+              </a>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <!-- Header -->
+    <mat-toolbar class="header ps-24 pe-24">
+      <button (click)="drawer.toggle()" *ngIf="isHandset$ | async" aria-label="Toggle sidenav" class="ms-4"
+              mat-icon-button
+              type="button">
+        <i-feather class="text-light-muted feather-base mt-n3" name="menu"></i-feather>
+      </button>
+    </mat-toolbar>
+
+    <!-- Content -->
+    <div class="body-wrapper">
+      <div class="page-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <p class="text-center pb-24 fs-16">© 2025 Todos os direitos reservados por <a
+      class="text-indigo" href="https://www.eventos.com.br"
+      target="_blank">eventos.com.br</a></p>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
